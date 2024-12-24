@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .toast {
+      position: fixed;
+      width: 200px;
+      border-left: 5px solid green;
+      background-color: white;
+      display: none;
+      right: 10px;
+      top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex flex-col items-center justify-center mb-8 min-h-screen ">
+    <div class="w-full p-8 bg-red rounded-lg shadow-lg bg-red-100 mb-8">
+      <h2 class="mb-6 text-2xl font-bold text-gray-800">STUDENT FORM</h2>
+      <form class="space-y-4" id="myForm" novalidate>
+        <!--Name-->
+        <!--Hidden Iput-->
+        <input type="hidden" id="usingForUpdate" name="usingForUpdate" />
+        <div>
+          <label for="name" class="block text-lg font-medium text-gray-700"> Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your Name"
+            class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:border-blue-500" />
+        </div>
+        <!--Email-->
+        <div>
+          <label for="Email id" class="block text-sm font-medium text-gray-700"> Email Id</label>
+          <input type="email" id="email" name="email" placeholder="Enter your Mail id"
+            class="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:border-blue-500" />
+        </div>
+        <!--Roll number-->
+        <div>
+          <label for="rollNumber" class="block text-medium font-medium text-gray-700"> Roll Number</label>
+          <input type="number" id="rollNumber" name="rollNumber" placeholder="Enter your Roll Number"
+            class="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:border-blue-500" />
+        </div>
+        <!--Gender-->
+        <div>
+          <label class="block text-lg font-medium text-gray-700">Gender</label>
+          <div class="flex items-center mt-1 space-x-4">
+            <label class="flex items-center">
+              <input type="radio" name="gender" checked value="male"
+                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500" />
+              <span class="ml-2 text-gray-700">Male</span>
+            </label>
+            <label class="flex items-center">
+              <input type="radio" name="gender" value="female"
+                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500" />
+              <span class="ml-2 text-gray-700">Female</span>
+            </label>
+          </div>
+        </div>
+        <!--Date Of Birth-->
+        <div>
+          <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+          <input type="date" id="dob" name="dob"
+            class="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+        </div>
+        <!--Phone Number-->
+        <div>
+          <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"
+            class="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+        </div>
+        <!--Department-->
+        <div>
+          <label for="department" class="block text-sm font-medium text-gray-700">Department</label>
+          <select id="department" name="department"
+            class="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            <option value="10" selected>Master of Computer Applications</option>
+            <option value="11">Information Technology</option>
+            <option value="12">Computer Science</option>
+          </select>
+        </div>
+        <!--subjects-->
+        <div class="flex row justify-between">
+          <div class="w-[30%]">
+            <label for="subject1" class="block text-sm font-medium text-gray-700">Subject1</label>
+            <input type="number" id="subject1" name="subject1" placeholder="Enter your Subject1"
+              class="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+          </div>
+          <div class="w-[30%]">
+            <label for="subject2" class="block text-sm font-medium text-gray-700">Subject2</label>
+            <input type="number" id="subject2" name="subject2" placeholder="Enter your Subject2"
+              class="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+          </div>
+          <div class="w-[30%]">
+            <label for="subject3" class="block text-sm font-medium text-gray-700">Subject3</label>
+            <input type="number" id="subject3" name="subject3" placeholder="Enter your Subject3"
+              class="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+          </div>
+        </div>
+        <!--Submit-->
+        <div>
+          <button type="submit" id="submitBtn" onclick="formSubmit(event)"
+            class="w-full px-2 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="w-full p-8 rounded-lg shadow-lg">
+      <table class="table-fixed border-collapse border border-gray-300">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">S.no</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Roll Number</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Name</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Email-Id</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Department</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Gender</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Date of Birth</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Phone Number</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Subject1</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Subject2</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Subject3</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Total</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Average</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Result</th>
+            <th class="p-2 border border-gray-300 text-left text-sm font-medium text-gray-700">Action</th>
+          </tr>
+        </thead>
+        <tbody id="table-student-reults">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="toast p-4" id="toast">
+    
+  </div>
+
+  <script type="text/javascript" src="./scripts/student-form.js"></script>
+</body>
+
+</html>
